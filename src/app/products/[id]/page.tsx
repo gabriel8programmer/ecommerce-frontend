@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
@@ -58,7 +58,7 @@ export default function ProductDetail() {
   ];
 
   return (
-    <div>
+    <div  className='bg-white'>
       <Head>
         <title>{product.name} - StyleShop</title>
         <meta name="description" content={product.description} />
@@ -66,7 +66,7 @@ export default function ProductDetail() {
 
       <Header />
 
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-8 ">
         <button 
           onClick={() => router.back()}
           className="flex items-center text-gray-600 hover:text-indigo-600 mb-6"
@@ -110,7 +110,7 @@ export default function ProductDetail() {
 
           {/* Product Info */}
           <div>
-            <h1 className="text-3xl font-bold mb-2">{product.name}</h1>
+            <h1 className="text-3xl font-bold mb-2 text-gray-900">{product.name}</h1>
             
             <div className="flex items-center mb-4">
               <div className="flex">
@@ -200,7 +200,7 @@ export default function ProductDetail() {
                 >
                   -
                 </button>
-                <span className="px-4 py-2">{quantity}</span>
+                <span className="px-4 py-2 text-gray-500">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
                   className="px-3 py-2 text-gray-600 hover:bg-gray-100"
@@ -209,8 +209,11 @@ export default function ProductDetail() {
                 </button>
               </div>
 
-              <button className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition-colors">
-                Adicionar ao Carrinho
+              <button className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition-colors cursor-pointer">
+                Adcionar ao Carrinho
+              </button>
+               <button className="flex-1 bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors cursor-pointer">
+                Comprar agora
               </button>
 
               <button
@@ -241,7 +244,7 @@ export default function ProductDetail() {
 
         {/* Reviews Section */}
         <section className="mt-16">
-          <h2 className="text-2xl font-bold mb-8">Avaliações dos clientes</h2>
+          <h2 className="text-2xl font-bold mb-8 text-gray-400">Avaliações dos clientes</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {reviews.map((review) => (
@@ -259,7 +262,7 @@ export default function ProductDetail() {
                   </div>
                   <span className="ml-2 text-gray-600">{review.date}</span>
                 </div>
-                <h4 className="font-medium mb-2">{review.author}</h4>
+                <h4 className="font-medium mb-2 text-gray-500">{review.author}</h4>
                 <p className="text-gray-700">{review.comment}</p>
               </div>
             ))}

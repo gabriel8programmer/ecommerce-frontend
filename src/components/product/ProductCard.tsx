@@ -1,12 +1,11 @@
-
-'use client'
+'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { StarIcon, HeartIcon } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartOutlineIcon } from '@heroicons/react/24/outline';
-import { Product } from '../../types';
+import { Product } from '@/types';
 
 interface ProductCardProps {
   product: Product;
@@ -21,6 +20,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <Image
           src={product.image}
           alt={product.name}
+          width={300}
+          height={300}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <button
@@ -78,13 +79,23 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <button
           disabled={!product.inStock}
-          className={`mt-4 w-full py-2 px-4 rounded-md ${
+          className={`mt-4 w-full py-2 px-4 rounded-md cursor-pointer  ${
             product.inStock
               ? 'bg-blue-600 text-white hover:bg-blue-700'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           } transition-colors`}
         >
           {product.inStock ? 'Adicionar ao carrinho' : 'Esgotado'}
+        </button>
+        <button
+          disabled={!product.inStock}
+          className={`mt-4 w-full py-2 px-4 rounded-md cursor-pointer ${
+            product.inStock
+              ? 'bg-green-600 text-white hover:bg-green-700'
+              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+          } transition-colors`}
+        >
+          Comprar
         </button>
       </div>
     </div>
