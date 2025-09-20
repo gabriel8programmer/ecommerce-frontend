@@ -1,0 +1,19 @@
+src/
+  components/
+    ui/          # Componentes de UI com Radix
+    layout/      # Header, Footer, etc.
+    product/     # Componentes relacionados a produtos
+    cart/        # Componentes do carrinho
+  pages/
+    index.tsx            # Página inicial
+    products/            # Lista de produtos
+      index.tsx
+      [id].tsx          # Detalhes do produto
+    cart.tsx            # Carrinho de compras
+    checkout.tsx        # Finalização de compra
+  types/
+    index.ts            # Tipos TypeScript
+  lib/
+    utils.ts            # Funções utilitárias
+  styles/
+    globals.css         # Estilos globais
