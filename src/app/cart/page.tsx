@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
-import { Product, CartItem } from '@/types';
+import { CartItem } from '@/types';
 
 // Dados mockados
 const cartItems: CartItem[] = [

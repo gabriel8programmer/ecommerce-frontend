@@ -1,60 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
 import Link from 'next/link';
-import Header from '../components/layout/Header';
-import ProductCard from '../components/product/ProductCard';
-import { Product } from '../types';
-
-// Dados mockados - serão substituídos pela API posteriormente
-const featuredProducts: Product[] = [
-  {
-    id: 1,
-    name: 'Smartphone Premium 128GB',
-    price: 899.99,
-    originalPrice: 999.99,
-    description: 'Smartphone de última geração com câmera tripla e bateria de longa duração',
-    image: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
-    category: 'electronics',
-    rating: 4.5,
-    reviewCount: 128,
-    inStock: true,
-  },
-  {
-    id: 2,
-    name: 'Tênis Esportivo Leve',
-    price: 199.99,
-    description: 'Tênis ideal para corrida e atividades físicas, com amortecimento premium',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
-    category: 'sports',
-    rating: 4.2,
-    reviewCount: 86,
-    inStock: true,
-  },
-  {
-    id: 3,
-    name: 'Fone de Ouvido Sem Fio',
-    price: 159.99,
-    originalPrice: 199.99,
-    description: 'Fone Bluetooth com cancelamento de ruído e até 30h de bateria',
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
-    category: 'electronics',
-    rating: 4.7,
-    reviewCount: 215,
-    inStock: true,
-  },
-  {
-    id: 4,
-    name: 'Relógio Inteligente',
-    price: 249.99,
-    description: 'Monitor de atividades físicas e notificações com resistência à água',
-    image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80',
-    category: 'electronics',
-    rating: 4.4,
-    reviewCount: 152,
-    inStock: false,
-  },
-];
+import Header from '@/components/layout/Header';
+import ProductCard from '@/components/product/ProductCard';
+import { mockProducts } from '@/types';
+import Image from 'next/image';
 
 const categories = [
   {
@@ -80,8 +30,11 @@ const categories = [
 ];
 
 export default function Home() {
+  // Pegar apenas 4 produtos para a página inicial
+  const featuredProducts = mockProducts.slice(0, 4);
+
   return (
-    <div>
+    <div className="min-h-screen bg-white">
       <Head>
         <title>StyleShop - Sua loja online</title>
         <meta name="description" content="Encontre os melhores produtos com os preços mais baixos" />
@@ -92,21 +45,14 @@ export default function Home() {
 
       <main className="container mx-auto px-4 py-8">
         {/* Hero Section */}
-        <section className="relative rounded-xl overflow-hidden mb-16">
-          <Image
-            src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-            alt="Promoção de verão"
-            width={1200}
-            height={400}
-            className="w-full h-64 md:h-96 object-cover"
-          />
+        <section className="relative rounded-xl overflow-hidden mb-16 bg-gradient-to-r from-blue-600 to-purple-700">
           <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center">
-            <div className="text-center text-white px-8 max-w-2xl mx-auto">
+            <div className="text-center text-white px-8 max-w-2xl mx-auto py-16">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Ofertas de Verão</h1>
               <p className="text-xl mb-8">Até 50% de desconto em itens selecionados</p>
               <Link
                 href="/products"
-                className="bg-indigo-600 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-indigo-700 transition-colors"
+                className="bg-white text-blue-600 px-8 py-3 rounded-md text-lg font-medium hover:bg-gray-100 transition-colors"
               >
                 Comprar Agora
               </Link>
@@ -116,19 +62,19 @@ export default function Home() {
 
         {/* Categories */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Categorias Populares</h2>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">Categorias Populares</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {categories.map((category) => (
               <Link
                 key={category.slug}
                 href={`/products?category=${category.slug}`}
-                className="group relative block overflow-hidden rounded-lg"
+                className="group relative block overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
                 <Image
+                  width={150}
+                  height={50}
                   src={category.image}
                   alt={category.name}
-                  width={300}
-                  height={200}
                   className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
@@ -142,10 +88,10 @@ export default function Home() {
         {/* Featured Products */}
         <section className="mb-16">
           <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold">Produtos em Destaque</h2>
+            <h2 className="text-3xl font-bold text-gray-900">Produtos em Destaque</h2>
             <Link
               href="/products"
-              className="text-indigo-600 hover:text-indigo-800 font-medium"
+              className="text-blue-600 hover:text-blue-800 font-medium"
             >
               Ver todos →
             </Link>
@@ -160,17 +106,17 @@ export default function Home() {
         {/* Newsletter */}
         <section className="bg-gray-100 rounded-xl p-8 mb-16">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl font-bold mb-4">Assine nossa newsletter</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">Assine nossa newsletter</h2>
+            <p className="text-gray-700 mb-6">
               Receba as últimas novidades e ofertas exclusivas diretamente no seu email.
             </p>
             <div className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Seu email"
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-900 placeholder-gray-500"
               />
-              <button className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors">
                 Assinar
               </button>
             </div>

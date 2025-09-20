@@ -1,3 +1,4 @@
+
 'use client'
 
 import React from 'react';
@@ -16,12 +17,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="group relative bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden">
+      <div className="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden relative">
         <Image
           src={product.image}
           alt={product.name}
-          width={300}
-          height={300}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         <button
@@ -61,7 +60,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <Link href={`/products/${product.id}`}>
-          <h3 className="text-sm font-medium text-gray-900 hover:text-indigo-600 line-clamp-2 h-10">
+          <h3 className="text-sm font-medium text-gray-900 hover:text-blue-600 line-clamp-2 h-10">
             {product.name}
           </h3>
         </Link>
@@ -81,7 +80,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           disabled={!product.inStock}
           className={`mt-4 w-full py-2 px-4 rounded-md ${
             product.inStock
-              ? 'bg-indigo-600 text-white hover:bg-indigo-700'
+              ? 'bg-blue-600 text-white hover:bg-blue-700'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
           } transition-colors`}
         >
