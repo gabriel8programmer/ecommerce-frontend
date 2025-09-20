@@ -16,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="group relative bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden relative">
+      <div className="aspect-w-1 aspect-h-1 bg-gray-100 overflow-hidden relative">
         <Image
           src={product.image}
           alt={product.name}
@@ -79,7 +79,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         <button
           disabled={!product.inStock}
-          className={`mt-4 w-full py-2 px-4 rounded-md cursor-pointer  ${
+          className={`mt-4 w-full py-2 px-4 rounded-md ${
             product.inStock
               ? 'bg-blue-600 text-white hover:bg-blue-700'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
@@ -89,7 +89,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </button>
         <button
           disabled={!product.inStock}
-          className={`mt-4 w-full py-2 px-4 rounded-md cursor-pointer ${
+          className={`mt-4 w-full py-2 px-4 rounded-md ${
             product.inStock
               ? 'bg-green-600 text-white hover:bg-green-700'
               : 'bg-gray-300 text-gray-500 cursor-not-allowed'
