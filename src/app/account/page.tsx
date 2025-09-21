@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Image from 'next/image';
 import Header from '@/components/layout/Header';
@@ -160,8 +160,6 @@ export default function AccountPage() {
         <title>{authMode === 'login' ? 'Login' : 'Criar Conta'} - StyleShop</title>
         <meta name="description" content="Faça login ou crie sua conta na StyleShop" />
       </Head>
-
-      <Header />
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Head from 'next/head';
 import Header from '@/components/layout/Header';
 
@@ -32,8 +32,6 @@ export default function ForgotPasswordPage() {
         <title>Recuperar Senha - StyleShop</title>
         <meta name="description" content="Recupere sua senha da StyleShop" />
       </Head>
-
-      <Header />
 
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
