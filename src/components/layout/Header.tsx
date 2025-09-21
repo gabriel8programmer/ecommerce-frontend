@@ -84,12 +84,12 @@ const Header = () => {
             <button className="p-2 text-slate-200 hover:text-white">
               <UserIcon className="h-6 w-6" />
             </button>
-            <button className="p-2 text-slate-200 hover:text-white relative">
+            <Link href='/cart' className="p-2 text-slate-200 hover:text-white relative">
               <ShoppingCartIcon className="h-6 w-6" />
               <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                 3
               </span>
-            </button>
+            </Link>
             <button 
               className="md:hidden p-2 text-slate-200 hover:text-white"
               onClick={() => setIsMenuOpen(true)}

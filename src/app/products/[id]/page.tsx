@@ -209,12 +209,14 @@ export default function ProductDetail() {
                 </button>
               </div>
 
-              <button className="flex-1 bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-700 transition-colors cursor-pointer">
-                Adcionar ao Carrinho
-              </button>
-               <button className="flex-1 bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors cursor-pointer">
-                Comprar agora
-              </button>
+              <div className='flex gap-2 flex-wrap'>
+                <button className="bg-indigo-600 text-white py-3 px-6 rounded-md hover:bg-indigo-800 transition-colors cursor-pointer">
+                  Adcionar ao Carrinho
+                </button>
+                <button className="bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition-colors cursor-pointer">
+                  Comprar agora
+                </button>
+              </div>
 
               <button
                 onClick={() => setIsFavorite(!isFavorite)}

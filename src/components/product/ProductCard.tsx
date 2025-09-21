@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { StarIcon, HeartIcon } from '@heroicons/react/24/solid';
 import { HeartIcon as HeartOutlineIcon } from '@heroicons/react/24/outline';
 import { Product } from '@/types';
+import { useRouter } from 'next/navigation';
 
 interface ProductCardProps {
   product: Product;
@@ -13,6 +14,13 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const [isFavorite, setIsFavorite] = React.useState(false);
+  const router = useRouter()
+
+  // Adicione esta função ao componente ProductCard
+  const handleBuyNow = () => {
+    // Redirecionar diretamente para o checkout com este produto
+    router.push(`/checkout?product=${product.id}&quantity=1`);
+  };
 
   return (
     <div className="group relative bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
@@ -88,6 +96,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           {product.inStock ? 'Adicionar ao carrinho' : 'Esgotado'}
         </button>
         <button
+          onClick={handleBuyNow}
           disabled={!product.inStock}
           className={`mt-4 w-full py-2 px-4 rounded-md ${
             product.inStock
