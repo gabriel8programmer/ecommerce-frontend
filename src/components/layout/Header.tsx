@@ -81,9 +81,9 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <button className="p-2 text-slate-200 hover:text-white">
+            <Link href='/account' className="p-2 text-slate-200 hover:text-white">
               <UserIcon className="h-6 w-6" />
-            </button>
+            </Link >
             <Link href='/cart' className="p-2 text-slate-200 hover:text-white relative">
               <ShoppingCartIcon className="h-6 w-6" />
               <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
